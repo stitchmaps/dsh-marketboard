@@ -1,7 +1,7 @@
 {
   "name": "dsh-marketboard",
-  "version": "0.1.0",
-  "description": "DeepSeek Harness 行情看板插件：A股/港股/美股、外汇（含交叉盘）、商品期货与全球指数的实时行情列表，自选持久化、搜索添加、自动刷新，无图表。",
+  "version": "0.2.0",
+  "description": "DeepSeek Harness 行情看板插件：A股/港股/美股、外汇（含交叉盘）、商品期货与全球指数的实时行情列表，自选与自定义分组持久化、搜索添加、自动刷新，无图表。",
   "icon": "icon.svg",
   "author": "gary",
   "type": "module",

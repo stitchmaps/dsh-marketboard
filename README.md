@@ -11,6 +11,7 @@ The UI is a native DSH Client plugin: it follows the active light/dark theme, us
 - **One board, six markets** — A-shares, Hong Kong, US, FX, commodity futures and indices. Filter by group, search inside the watchlist and sort by move.
 - **Live by default** — 3/5/10/30/60-second auto-refresh, pause/resume, manual refresh, and stale-quote markers when an upstream source hiccups.
 - **A useful watchlist** — 49 curated instruments on first run; star to pin, remove with one click, add through search or a manual code form.
+- **Custom groups** — keep instruments from different markets in one named collection. Create, rename, delete and tick members; A-shares / Hong Kong / US / FX / futures / indices remain immutable default groups.
 - **A real dashboard, not a table dump** — breadth/up-down counts, average move, top gainer/loser, last update, day-range position, open and previous close.
 - **Made for the Harness** — theme tokens only for UI colour, localized (zh/en), responsive, and built with local React controls (no Harness Client package imports).
 - **Host-side persistence** — `<DSH_HOME>/dsh-marketboard/data.json` with atomic writes, a `.bak` fallback and the latest 20 timestamped backups. No localStorage.
@@ -71,11 +72,12 @@ After installation, **refresh the DSH Web GUI** (`Ctrl+R`). If the host half was
 ## Usage
 
 1. Open **Marketboard** in the left navigation.
-2. Use the group chips to switch markets; use the search field to filter the current watchlist.
-3. Press **Add symbol** to search by name/ticker or to enter a code manually.
-4. Hover a row: the star pins it to the top, the `×` removes it.
-5. Pause automatic refresh from the toolbar; refresh manually at any time.
-6. Open **Settings** to change refresh interval, up/down colours (red-up/green-down or the reverse) and density.
+2. Use the group chips to switch markets or custom groups. Default market groups are automatic and cannot be deleted.
+3. Press **New group** to create a custom collection, then tick its members; use **Manage** to rename or delete custom groups.
+4. Press **Add symbol** to search by name/ticker or to enter a code manually. When a custom group is active, new symbols are added to that group too.
+5. Hover a row: the star pins it to the top, the `×` removes it.
+6. Pause automatic refresh from the toolbar; refresh manually at any time.
+7. Open **Settings** to change refresh interval, up/down colours (red-up/green-down or the reverse) and density.
 
 ## Architecture
 
@@ -97,11 +99,15 @@ All routes are `POST` JSON.
 | | `{op:'remove', id}` | Remove an instrument |
 | | `{op:'favorite', id}` | Toggle pin |
 | | `{op:'saveSettings', settings}` | Persist preferences |
-| | `{op:'resetWatchlist'}` | Restore the built-in default list, keeping settings |
+| | `{op:'resetWatchlist'}` | Restore the built-in default list, keeping settings and custom groups (members still present are kept) |
+| | `{op:'addGroup', name}` | Create a custom group |
+| | `{op:'renameGroup', id, name}` | Rename a custom group |
+| | `{op:'deleteGroup', id}` | Delete a custom group (instruments stay watched) |
+| | `{op:'setGroupItems', id, itemIds}` | Set custom group members |
 | `/api/dsh-marketboard/quotes` | `{}` | Fetch current quotes for the watchlist |
 | `/api/dsh-marketboard/search` | `{q, group}` | Search the built-in catalog and Tencent stock search |
 
-The host validates and canonicalizes every write; the browser never picks its own IDs.
+The host validates and canonicalizes every write; the browser never picks its own IDs. The watchlist, settings and custom groups live in the local data file; default market groups are implicit and cannot be changed or deleted.
 
 ## Compatibility
 
