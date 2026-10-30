@@ -8,10 +8,10 @@ The UI is a native DSH Client plugin: it follows the active light/dark theme, us
 
 ## Highlights
 
-- **One board, six markets** — A-shares, Hong Kong, US, FX, commodity futures and indices. Filter by group, search inside the watchlist and sort by move.
+- **One board, seven markets** — A-shares, Hong Kong, US, FX, China futures, global futures and indices. Filter by group, search inside the watchlist and sort by move.
 - **Live by default** — 3/5/10/30/60-second auto-refresh, pause/resume, manual refresh, and stale-quote markers when an upstream source hiccups.
 - **A useful watchlist** — 49 curated instruments on first run; star to pin, remove with one click, add through search or a manual code form.
-- **Custom groups** — keep instruments from different markets in one named collection. Create, rename, delete and tick members; A-shares / Hong Kong / US / FX / futures / indices remain immutable default groups.
+- **Custom groups** — keep instruments from different markets in one named collection. Create, rename, delete and tick members; A-shares / Hong Kong / US / FX / China futures / global futures / indices remain immutable default groups.
 - **A real dashboard, not a table dump** — breadth/up-down counts, average move, top gainer/loser, last update, day-range position, open and previous close.
 - **Made for the Harness** — theme tokens only for UI colour, localized (zh/en), responsive, and built with local React controls (no Harness Client package imports).
 - **Host-side persistence** — `<DSH_HOME>/dsh-marketboard/data.json` with atomic writes, a `.bak` fallback and the latest 20 timestamped backups. No localStorage.
@@ -24,7 +24,8 @@ The UI is a native DSH Client plugin: it follows the active light/dark theme, us
 | Hong Kong | `hk` | 00700 腾讯控股, 09988 阿里巴巴-W, 03690 美团-W |
 | US | `us` | AAPL, NVDA, MSFT, TSLA, AMZN, META |
 | FX | `fx` | USDCNH, EURUSD, GBPUSD, USDJPY, EURJPY, GBPJPY, AUDJPY … |
-| Commodity futures | `futcn`, `futgl` | RB0, CU0, AU0, AG0, SC0, M0, I0, TA0; CL=F, GC=F |
+| China futures | `futcn` | RB0, CU0, AU0, AG0, SC0, M0, I0, TA0 |
+| Global futures | `futgl` | CL=F, GC=F |
 | Indices | `index` | 上证指数, 深证成指, 创业板指, 恒生指数, 标普500, 纳斯达克, 道琼斯, 日经225 |
 
 Manual code formats:
