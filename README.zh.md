@@ -70,6 +70,8 @@ dsh plugin --profile desktop add file:/绝对路径/dsh-marketboard
 
 安装后**刷新 DSH Web GUI**（`Ctrl+R`）。若宿主半侧此前已经加载过，请在 profile 的 `cordis.patch.yml` 中删除再加回 `dsh-marketboard` 的 `insert` 行，或重启一次桌面端。
 
+上架到 dshmarket / 插件市场的步骤见 [PUBLISHING.md](PUBLISHING.md)。
+
 ## 使用
 
 1. 点击左侧导航的 **行情看板**。

@@ -70,6 +70,8 @@ Add the repository folder as a local bundle in the DSH Plugin Manager, then enab
 
 After installation, **refresh the DSH Web GUI** (`Ctrl+R`). If the host half was already loaded, reload the profile patch (remove and re-add the `dsh-marketboard` insert row) or restart the desktop app once.
 
+To submit this plugin to dshmarket / the plugin market, see [PUBLISHING.md](PUBLISHING.md).
+
 ## Usage
 
 1. Open **Marketboard** in the left navigation.
